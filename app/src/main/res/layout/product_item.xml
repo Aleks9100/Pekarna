@@ -27,8 +27,8 @@
                 android:id="@+id/view2"
                 android:layout_width="1dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="608dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="580dp"
                 android:background="@color/grey"
                 app:layout_constraintStart_toEndOf="@+id/TV_Kkal"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -48,10 +48,13 @@
                 android:layout_width="339dp"
                 android:layout_height="1dp"
                 android:layout_marginStart="48dp"
+                android:layout_marginTop="23dp"
                 android:layout_marginBottom="19dp"
                 android:background="@color/grey"
                 app:layout_constraintBottom_toTopOf="@+id/textView8"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TV_Description"
+                app:layout_constraintVertical_bias="0.36" />
 
             <TextView
                 android:id="@+id/ET_protein"
@@ -102,7 +105,8 @@
                 android:id="@+id/TV_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="149dp"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="28dp"
                 android:text="Название"
                 android:textColor="@color/light"
                 android:textSize="38sp"
@@ -136,9 +140,11 @@
                 android:id="@+id/TV_Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="203dp"
+                android:layout_marginStart="156dp"
+                android:layout_marginTop="8dp"
                 android:text="Описание"
                 android:textColor="@color/grey"
+                android:textSize="28sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TV_title" />
 
@@ -146,10 +152,10 @@
                 android:id="@+id/imageView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="116dp"
+                android:layout_marginStart="100dp"
                 android:layout_marginEnd="116dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.203"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:srcCompat="@drawable/text" />
@@ -207,12 +213,14 @@
         android:id="@+id/Sale"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="690dp"
+        android:layout_marginTop="670dp"
         android:background="@color/black"
         android:text="Купить"
         android:textColor="@color/light"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
