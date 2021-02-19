@@ -73,6 +73,7 @@
                 app:srcCompat="@drawable/specal" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryRecycler"
                 android:layout_marginLeft="54dp"
                 android:layout_marginRight="54dp"
                 android:layout_width="match_parent"
