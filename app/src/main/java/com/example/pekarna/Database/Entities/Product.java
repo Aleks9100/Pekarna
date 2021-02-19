@@ -13,6 +13,7 @@ public class Product {
 
     public String URLPhotoProduct;
     public  String TitleProduct;
+    public double Price;
     public String Description;
     public int KKal;
     public int Protein;

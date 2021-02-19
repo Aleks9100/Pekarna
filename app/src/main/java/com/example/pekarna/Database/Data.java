@@ -13,6 +13,8 @@ import java.util.List;
 
 public class Data {
     private static Data instance;
+    public final static String ID = "id";
+    public final static String TITLE="title";
     AppDatabase db;
     public Data(Context context) {
          db = Room.databaseBuilder(context,
