@@ -1,4 +1,4 @@
-package com.example.pekarna;
+package com.example.pekarna.Presentation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Category;
+import com.example.pekarna.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,CategoryActivity.class);
+                    Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
                     intent.putExtra(Data.ID,category.CategoryID);
                     intent.putExtra(Data.TITLE,category.Title);
                     startActivity(intent);

@@ -1,4 +1,4 @@
-package com.example.pekarna;
+package com.example.pekarna.Presentation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +16,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.example.pekarna.Database.Data;
-import com.example.pekarna.Database.Entities.Category;
 import com.example.pekarna.Database.Entities.Product;
+import com.example.pekarna.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +68,7 @@ public class CategoryActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(CategoryActivity.this,ProductActivity.class);
+                    Intent intent = new Intent(CategoryActivity.this, ProductActivity.class);
                     intent.putExtra(Data.ID,product.ProductID);
                     startActivity(intent);
                 }

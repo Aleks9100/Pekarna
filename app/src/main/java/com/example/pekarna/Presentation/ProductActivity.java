@@ -1,8 +1,10 @@
-package com.example.pekarna;
+package com.example.pekarna.Presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.pekarna.R;
 
 public class ProductActivity extends AppCompatActivity {
 
