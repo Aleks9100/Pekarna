@@ -1,4 +1,4 @@
-package com.example.pekarna.Database;
+package com.example.pekarna.Dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

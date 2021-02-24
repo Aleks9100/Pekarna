@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Presentation.ProductActivity"></activity>
-        <activity android:name=".Presentation.CategoryActivity" />
-        <activity android:name=".Presentation.MainActivity">
+        <activity android:name=".Presentation.AddEdit.AddEditProductActivity"></activity>
+        <activity android:name=".Presentation.Product.ProductActivity" />
+        <activity android:name=".Presentation.Category.CategoryActivity" />
+        <activity android:name=".Presentation.Main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

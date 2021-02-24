@@ -1,4 +1,4 @@
-package com.example.pekarna.Presentation;
+package com.example.pekarna.Presentation.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,14 +10,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Category;
+import com.example.pekarna.Presentation.Category.CategoryActivity;
 import com.example.pekarna.R;
+import com.example.pekarna.databinding.CategoryItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,22 +24,22 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     CategoryAdapter adapter;
-    RequestManager glide;
     List<Category>  categories;
     LayoutInflater layoutInflater;
+    Data data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.categoryRecycler);
-        glide= Glide.with(this);
         layoutInflater=getLayoutInflater();
         categories= new ArrayList<>();
         adapter = new CategoryAdapter();
         recyclerView.setAdapter(adapter);
 
-        Data.getInstance(this).getCategoryAll().observe(MainActivity.this, new Observer<List<Category>>() {
+        data=data.getInstance(this);
+        data.getCategoryAll().observe(MainActivity.this, new Observer<List<Category>>() {
             @Override
             public void onChanged(List<Category> categories) {
                 MainActivity.this.categories = categories;
@@ -55,16 +53,16 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view =layoutInflater.inflate(R.layout.main_menu_item,parent,false);
-            return new ViewHolder(view);
-        }
+           CategoryItemBinding binding =CategoryItemBinding.inflate(layoutInflater,parent,false);
+            return new ViewHolder(binding);
+    }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Category category = categories.get(position);
+            final Category category = categories.get(position);
 
-            holder.titleView.setText(category.Title);
-            glide.load(category.URLPhoto).placeholder(R.drawable.ic_launcher_background).into(holder.productImagel);
+            holder.binding.TVTitle.setText(category.Title);
+            data.loadImage(category.URLPhoto,holder.binding.ProductImage);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,14 +78,11 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return categories.size();
         }
-
         public class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView titleView;
-            final ImageView productImagel;
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                titleView=itemView.findViewById(R.id.TV_title);
-                productImagel = itemView.findViewById(R.id.image_Product);
+            CategoryItemBinding binding;
+            public ViewHolder(@NonNull CategoryItemBinding binding) {
+                super(binding.getRoot());
+                this.binding = binding;
             }
         }
     }

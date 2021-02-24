@@ -1,4 +1,4 @@
-package com.example.pekarna.Presentation;
+package com.example.pekarna.Presentation.Category;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,14 +10,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Product;
+import com.example.pekarna.Presentation.Product.ProductActivity;
 import com.example.pekarna.R;
+import com.example.pekarna.databinding.CategoryItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +25,8 @@ public class CategoryActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ProductAdapter adapter;
     List<Product> products;
-    RequestManager glide;
     LayoutInflater layoutInflater;
+    Data data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +35,12 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.ProductRecycler);
         layoutInflater=getLayoutInflater();
         products= new ArrayList<>();
-        glide= Glide.with(this);
         adapter = new ProductAdapter();
         recyclerView.setAdapter(adapter);
         int id = getIntent().getIntExtra(Data.ID,0);
         title.setText(getIntent().getStringExtra(Data.TITLE));
-        Data.getInstance(this).getCurrentCategoryProduct(id).observe(CategoryActivity.this, new Observer<List<Product>>() {
+        data = Data.getInstance(this);
+        data.getCurrentCategoryProduct(id).observe(CategoryActivity.this, new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> productsValue) {
                 products=productsValue;
@@ -54,17 +53,17 @@ public class CategoryActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = layoutInflater.inflate(R.layout.category_item,parent,false);
-            return new ViewHolder(view);
+            CategoryItemBinding binding = CategoryItemBinding.inflate(layoutInflater,parent,false);
+            return new ViewHolder(binding);
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Product product = products.get(position);
+            final Product product = products.get(position);
 
-            holder.TV_Title.setText(product.TitleProduct);
-            holder.TV_Price.setText(String.valueOf(product.Price));
-            glide.load(product.URLPhotoProduct).placeholder(R.drawable.ic_launcher_background).into(holder.productView);
+            holder.binding.TVTitle.setText(product.TitleProduct);
+            holder.binding.TVPrice.setText(String.valueOf(product.Price));
+            data.loadImage(product.URLPhotoProduct,holder.binding.ProductImage);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -81,14 +80,10 @@ public class CategoryActivity extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView TV_Price;
-            final TextView TV_Title;
-            final ImageView productView;
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                TV_Price = itemView.findViewById(R.id.TV_Price);
-                TV_Title = itemView.findViewById(R.id.TV_title);
-                productView = itemView.findViewById(R.id.ProductImage);
+            CategoryItemBinding binding;
+            public ViewHolder(@NonNull CategoryItemBinding binding) {
+                super(binding.getRoot());
+                this.binding = binding;
             }
         }
     }

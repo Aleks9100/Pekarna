@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Pekarna</string>
     <string name="stroka">- - - - - </string>
+    <string name="title">Название</string>
+    <string name="Price">Цена</string>
+    <string name="Description">Описание</string>
+    <string name="KKal">Калории</string>
+    <string name="Protein">Протеин</string>
+    <string name="Carbohydrates">Углеводы</string>
+    <string name="Fat">Жиры</string>
+    <string name="Photo">Ссылка на фото</string>
 </resources>

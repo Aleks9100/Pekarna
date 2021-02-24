@@ -1,13 +1,17 @@
 package com.example.pekarna.Database;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.example.pekarna.Database.Entities.Category;
 import com.example.pekarna.Database.Entities.Product;
 import com.example.pekarna.ProductWithCategory;
+import com.example.pekarna.R;
 
 import java.util.List;
 
@@ -16,9 +20,17 @@ public class Data {
     public final static String ID = "id";
     public final static String TITLE="title";
     AppDatabase db;
+    RequestManager glide;
     public Data(Context context) {
          db = Room.databaseBuilder(context,
                 AppDatabase.class, "database-name").allowMainThreadQueries().build();
+         glide = Glide.with(context);
+    }
+    public  void loadImage(String url, ImageView imageView)
+    {
+        glide.load(url)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(imageView);
     }
 
     public static Data getInstance(Context context) {
