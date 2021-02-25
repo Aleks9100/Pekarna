@@ -19,7 +19,7 @@ public interface ProductDao
     @Query("Select * from Product,category where CategoryID = :CurrentCategory")
     LiveData<List<Product>> GetAllProductInCategory(int CurrentCategory);
     @Query("Select * from Product where ProductID = :CurrentProduct")
-    LiveData<List<Product>> GetProductInID(int CurrentProduct);
+    LiveData<Product> GetProductInID(int CurrentProduct);
 
     @Insert
     void insert(Product product);

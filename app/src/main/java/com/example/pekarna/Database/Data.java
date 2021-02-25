@@ -1,6 +1,7 @@
 package com.example.pekarna.Database;
 
 import android.content.Context;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Data {
     private static Data instance;
     public final static String ID = "id";
+    public final static String ID_PRODUCT = "id_product";
     public final static String TITLE="title";
     AppDatabase db;
     RequestManager glide;
@@ -39,6 +41,11 @@ public class Data {
         return instance;
     }
 
+    public String getStringEditText(EditText text)
+    {
+        return text.getText().toString();
+    }
+
         public LiveData<List<Product>> getCurrentCategoryProduct(int categoryID)
         {
         return db.productDao().GetAllProductInCategory(categoryID);
@@ -48,7 +55,7 @@ public class Data {
         {
             return db.categoryDao().getCategoryAll();
         }
-        public  LiveData<List <Product>> getProductInID(int id)
+        public  LiveData<Product> getProductInID(int id)
         {
             return db.productDao().GetProductInID(id);
         }
