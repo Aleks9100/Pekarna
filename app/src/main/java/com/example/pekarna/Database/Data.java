@@ -9,6 +9,7 @@ import androidx.room.Room;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pekarna.Database.Entities.Category;
 import com.example.pekarna.Database.Entities.Product;
 import com.example.pekarna.ProductWithCategory;
@@ -21,9 +22,9 @@ public class Data {
     public final static String ID = "id";
     public final static String ID_PRODUCT = "id_product";
     public final static String TITLE="title";
-    AppDatabase db;
+    public  AppDatabase db;
     RequestManager glide;
-    public Data(Context context) {
+    private Data(Context context) {
          db = Room.databaseBuilder(context,
                 AppDatabase.class, "database-name").allowMainThreadQueries().build();
          glide = Glide.with(context);
@@ -31,6 +32,7 @@ public class Data {
     public  void loadImage(String url, ImageView imageView)
     {
         glide.load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(imageView);
     }

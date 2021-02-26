@@ -1,9 +1,10 @@
-package com.example.pekarna.Dao;
+package com.example.pekarna.Database.Dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.pekarna.Database.Entities.Category;
@@ -16,12 +17,12 @@ import java.util.List;
 public interface ProductDao
 {
 
-    @Query("Select * from Product,category where CategoryID = :CurrentCategory")
+    @Query("Select * from Product,Category where CategoryID = :CurrentCategory")
     LiveData<List<Product>> GetAllProductInCategory(int CurrentCategory);
     @Query("Select * from Product where ProductID = :CurrentProduct")
     LiveData<Product> GetProductInID(int CurrentProduct);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Product product);
 
     @Delete

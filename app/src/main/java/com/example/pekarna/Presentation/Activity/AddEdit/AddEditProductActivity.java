@@ -1,4 +1,4 @@
-package com.example.pekarna.Presentation.AddEdit;
+package com.example.pekarna.Presentation.Activity.AddEdit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 
-import com.example.pekarna.Dao.ProductDao;
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Product;
 import com.example.pekarna.databinding.ActivityAddEditProductBinding;
@@ -16,9 +15,8 @@ import com.example.pekarna.databinding.ActivityAddEditProductBinding;
 public class AddEditProductActivity extends AppCompatActivity {
 
     ActivityAddEditProductBinding binding;
-    int idCategory = 0, idProduct =0;
+    int idCategory = 0, idProduct = 0;
     Data data;
-    ProductDao productDao;
     Product currentProduct;
 
     @Override
@@ -36,18 +34,19 @@ public class AddEditProductActivity extends AppCompatActivity {
                 public void onChanged(Product productsValue) {
                     currentProduct =productsValue;
             binding.ETTitle.setText(currentProduct.TitleProduct);
-            binding.ETCarbohydrates.setText(currentProduct.Carbohydrates);
+            binding.ETCarbohydrates.setText(String.valueOf(currentProduct.Carbohydrates));
             binding.ETDescription.setText(currentProduct.Description);
-            binding.ETFat.setText(currentProduct.Fat);
-            binding.ETKKal.setText(currentProduct.KKal);
-            binding.ETProtein.setText(currentProduct.Protein);
-            binding.ETPrice.setText(currentProduct.getPrice());
+            binding.ETFat.setText(String.valueOf(currentProduct.Fat));
+            binding.ETKKal.setText(String.valueOf(currentProduct.KKal));
+            binding.ETProtein.setText(String.valueOf(currentProduct.Protein));
+            binding.ETPrice.setText(String.valueOf(currentProduct.Price));
             binding.ETPhoto.setText(currentProduct.URLPhotoProduct);
                 }
             });
             binding.AddEditButton.setText("Редактировать");
         }
         else currentProduct = new Product();
+
         binding.ETPhoto.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -76,7 +75,6 @@ public class AddEditProductActivity extends AppCompatActivity {
         currentProduct.Protein=Integer.parseInt(data.getStringEditText(binding.ETProtein));
         currentProduct.ProductCategoryID=idCategory;
         currentProduct.URLPhotoProduct=data.getStringEditText(binding.ETPhoto);
-        productDao.insert(currentProduct);
-
+        data.db.productDao().insert(currentProduct);
     }
 }

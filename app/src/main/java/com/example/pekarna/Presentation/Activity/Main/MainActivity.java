@@ -1,4 +1,4 @@
-package com.example.pekarna.Presentation.Main;
+package com.example.pekarna.Presentation.Activity.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,56 +13,67 @@ import android.view.ViewGroup;
 
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Category;
-import com.example.pekarna.Presentation.Category.CategoryActivity;
-import com.example.pekarna.R;
-import com.example.pekarna.databinding.CategoryItemBinding;
+import com.example.pekarna.Presentation.Activity.Category.CategoryActivity;
+import com.example.pekarna.databinding.ActivityMainBinding;
+import com.example.pekarna.databinding.MainMenuItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    ActivityMainBinding binding;
     CategoryAdapter adapter;
-    List<Category>  categories;
+    List<Category> categoryList;
     LayoutInflater layoutInflater;
     Data data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        recyclerView = findViewById(R.id.categoryRecycler);
-        layoutInflater=getLayoutInflater();
-        categories= new ArrayList<>();
+        layoutInflater = getLayoutInflater();
+        categoryList = new ArrayList<>();
         adapter = new CategoryAdapter();
-        recyclerView.setAdapter(adapter);
+        binding.categoryRecycler.setAdapter(adapter);
 
-        data=data.getInstance(this);
+
+        data =Data.getInstance(getApplicationContext());
         data.getCategoryAll().observe(MainActivity.this, new Observer<List<Category>>() {
             @Override
             public void onChanged(List<Category> categories) {
-                MainActivity.this.categories = categories;
+                categoryList = categories;
                 adapter.notifyDataSetChanged();
             }
         });
+//        category();
     }
 
+    public void category()
+      {
+          Category categorys = new Category();
+        categorys.Title="Печенья";
+        categorys.URLPhoto = "https://ne-dieta.ru/wp-content/uploads/2019/03/final_1200-7.jpg";
+      data.db.categoryDao().insert(categorys);
+}
     private class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-           CategoryItemBinding binding =CategoryItemBinding.inflate(layoutInflater,parent,false);
+           MainMenuItemBinding binding =MainMenuItemBinding.inflate(layoutInflater,parent,false);
             return new ViewHolder(binding);
     }
 
+
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            final Category category = categories.get(position);
+            final Category category = categoryList.get(position);
 
             holder.binding.TVTitle.setText(category.Title);
-            data.loadImage(category.URLPhoto,holder.binding.ProductImage);
+            data.loadImage(category.URLPhoto,holder.binding.imageProduct);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,14 +87,15 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return categories.size();
+            return categoryList.size();
         }
         public class ViewHolder extends RecyclerView.ViewHolder {
-            CategoryItemBinding binding;
-            public ViewHolder(@NonNull CategoryItemBinding binding) {
+            MainMenuItemBinding binding;
+            public ViewHolder(@NonNull MainMenuItemBinding binding) {
                 super(binding.getRoot());
                 this.binding = binding;
             }
         }
     }
+
 }

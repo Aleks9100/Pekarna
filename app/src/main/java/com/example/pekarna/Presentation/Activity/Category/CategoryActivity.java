@@ -1,4 +1,4 @@
-package com.example.pekarna.Presentation.Category;
+package com.example.pekarna.Presentation.Activity.Category;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Product;
-import com.example.pekarna.Presentation.AddEdit.AddEditProductActivity;
-import com.example.pekarna.Presentation.Product.ProductActivity;
+import com.example.pekarna.Presentation.Activity.AddEdit.AddEditProductActivity;
+import com.example.pekarna.Presentation.Activity.Product.ProductActivity;
 import com.example.pekarna.R;
 import com.example.pekarna.databinding.CategoryItemBinding;
 
@@ -41,7 +41,7 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         id = getIntent().getIntExtra(Data.ID,0);
         title.setText(getIntent().getStringExtra(Data.TITLE));
-        data = Data.getInstance(this);
+        data = Data.getInstance(getApplicationContext());
         data.getCurrentCategoryProduct(id).observe(CategoryActivity.this, new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> productsValue) {
@@ -77,7 +77,8 @@ public class CategoryActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(CategoryActivity.this, ProductActivity.class);
-                    intent.putExtra(Data.ID,product.ProductID);
+                    intent.putExtra(Data.ID,id);
+                    intent.putExtra(Data.ID_PRODUCT,product.ProductID);
                     startActivity(intent);
                 }
             });

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,58 +27,58 @@
                 android:id="@+id/view2"
                 android:layout_width="1dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="580dp"
+                android:layout_marginStart="16dp"
                 android:background="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/view"
                 app:layout_constraintStart_toEndOf="@+id/TV_Kkal"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <View
                 android:id="@+id/view"
-                android:layout_width="339dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="36dp"
                 android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TV_Kkal" />
 
             <View
                 android:id="@+id/view3"
-                android:layout_width="339dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginBottom="19dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="36dp"
                 android:background="@color/grey"
-                app:layout_constraintBottom_toTopOf="@+id/textView8"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TV_Description"
-                app:layout_constraintVertical_bias="0.36" />
+                app:layout_constraintTop_toBottomOf="@+id/TV_Description" />
 
             <TextView
                 android:id="@+id/ET_protein"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginBottom="27dp"
                 android:text="0 г"
                 android:textColor="@color/light"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/view"
-                app:layout_constraintStart_toEndOf="@+id/view2" />
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/TV_Kkal"
+                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toTopOf="@+id/TV_Kkal" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="61dp"
-                android:layout_marginBottom="9dp"
+                android:layout_marginStart="16dp"
                 android:text="Протеин"
                 android:textColor="@color/grey"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/ET_protein"
-                app:layout_constraintStart_toEndOf="@+id/textView7" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintStart_toEndOf="@+id/view2" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -93,23 +93,24 @@
                 android:id="@+id/TV_CH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginBottom="28dp"
                 android:text="50 г"
                 android:textColor="@color/light"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/view"
-                app:layout_constraintStart_toEndOf="@+id/ET_protein" />
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ET_protein"
+                app:layout_constraintEnd_toEndOf="@+id/textView11"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toTopOf="@+id/ET_protein"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/TV_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="24dp"
                 android:text="Название"
                 android:textColor="@color/light"
                 android:textSize="38sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
@@ -117,45 +118,41 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="46dp"
-                android:layout_marginBottom="9dp"
                 android:text="Углеводы"
                 android:textColor="@color/grey"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/TV_CH"
-                app:layout_constraintStart_toEndOf="@+id/ET_protein" />
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView12"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginEnd="60dp"
                 android:text="Жиры"
                 android:textColor="@color/grey"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/view3" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/TV_Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="152dp"
                 android:layout_marginTop="4dp"
                 android:text="Описание"
                 android:textColor="@color/grey"
                 android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TV_title" />
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="116dp"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.203"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:srcCompat="@drawable/text" />
@@ -164,12 +161,12 @@
                 android:id="@+id/TV_Kkal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="49dp"
                 android:layout_marginTop="8dp"
                 android:text="1000"
                 android:textColor="@color/light"
-                android:textSize="26sp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <TextView
@@ -177,24 +174,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="ккал"
                 android:textColor="@color/grey"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/TV_Kkal"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <TextView
                 android:id="@+id/TV_Fats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="58dp"
-                android:layout_marginTop="10dp"
                 android:text="0 г"
                 android:textColor="@color/light"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/TV_CH"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/TV_CH"
+                app:layout_constraintEnd_toEndOf="@+id/textView12"
+                app:layout_constraintStart_toStartOf="@+id/textView12"
+                app:layout_constraintTop_toTopOf="@+id/TV_CH"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/TV_Price"
@@ -218,21 +218,31 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:srcCompat="@drawable/ic_edit" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="DeleteProduct"
+                android:clickable="true"
+                app:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/floatingActionButton2"
+                app:srcCompat="@drawable/ic_delete" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/Sale"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="670dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/black"
         android:text="Купить"
         android:textColor="@color/light"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scrollView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

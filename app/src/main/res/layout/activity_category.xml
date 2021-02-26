@@ -5,7 +5,7 @@
     android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentation.Category.CategoryActivity">
+    tools:context=".Presentation.Activity.Category.CategoryActivity">
 
     <LinearLayout
         android:id="@+id/ll"
@@ -19,29 +19,25 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <TextView
+                android:layout_gravity="left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:layout_marginTop="10dp"
                 android:text="- - - - - "
                 android:textColor="@color/light" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="335dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="right"
                 android:text="- - - - - "
                 android:textColor="@color/light" />
 
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/categoryET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="10dp"
                 android:text="Какая-то категория"
                 android:textColor="@color/light"
                 android:textSize="18sp" />
@@ -51,6 +47,8 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
         android:id="@+id/ProductRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"

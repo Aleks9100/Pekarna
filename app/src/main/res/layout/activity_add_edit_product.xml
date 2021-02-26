@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -54,6 +57,7 @@
             <EditText
                 android:id="@+id/ET_KKal"
                 style="@style/EditTextStyle"
+                android:inputType="number"
                 android:hint="@string/KKal"
                 android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +67,7 @@
             <EditText
                 android:id="@+id/ET_Protein"
                 style="@style/EditTextStyle"
+                android:inputType="number"
                 android:hint="@string/Protein"
                 android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +76,7 @@
 
             <EditText
                 android:id="@+id/ET_Carbohydrates"
+                android:inputType="number"
                 style="@style/EditTextStyle"
                 android:hint="@string/Carbohydrates"
                 android:textColorHint="@color/grey"
@@ -80,6 +86,7 @@
 
             <EditText
                 android:id="@+id/ET_Fat"
+                android:inputType="number"
                 style="@style/EditTextStyle"
                 android:hint="@string/Fat"
                 android:textColorHint="@color/grey"
@@ -88,6 +95,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ET_Carbohydrates" />
 
             <EditText
+               android:ems="5"
                 android:id="@+id/ET_Photo"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="4dp"
@@ -105,12 +113,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@color/black"
-                android:text="Добавить"
                 android:onClick="AddEditClick"
+                android:text="Добавить"
                 android:textColor="@color/light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ET_Fat" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -127,3 +136,4 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
