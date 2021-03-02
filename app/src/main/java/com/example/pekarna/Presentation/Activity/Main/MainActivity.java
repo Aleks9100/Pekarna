@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-//        category();
+        if(categoryList.size() == 0) {
+        category();
+        }
     }
 
     public void category()
