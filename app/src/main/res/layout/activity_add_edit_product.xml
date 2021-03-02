@@ -123,6 +123,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ET_Fat" />
 
             <ImageView
+                android:adjustViewBounds="true"
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
