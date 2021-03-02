@@ -17,10 +17,10 @@ import java.util.List;
 public interface ProductDao
 {
 
-    @Query("Select * from Product,Category where CategoryID = :CurrentCategory")
-    LiveData<List<Product>> GetAllProductInCategory(int CurrentCategory);
+    @Query("Select * from Product,Category where categoryID = :CurrentCategory")
+    LiveData<List<Product>> getAllProductInCategory(int CurrentCategory);
     @Query("Select * from Product where ProductID = :CurrentProduct")
-    LiveData<Product> GetProductInID(int CurrentProduct);
+    LiveData<Product> getProductInID(int CurrentProduct);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Product product);

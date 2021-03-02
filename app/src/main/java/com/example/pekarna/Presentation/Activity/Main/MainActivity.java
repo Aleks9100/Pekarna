@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     public void category()
       {
           Category categorys = new Category();
-        categorys.Title="Печенья";
-        categorys.URLPhoto = "https://ne-dieta.ru/wp-content/uploads/2019/03/final_1200-7.jpg";
+        categorys.title ="Печенья";
+        categorys.url = "https://ne-dieta.ru/wp-content/uploads/2019/03/final_1200-7.jpg";
       data.db.categoryDao().insert(categorys);
 }
     private class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
@@ -72,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final Category category = categoryList.get(position);
 
-            holder.binding.TVTitle.setText(category.Title);
-            data.loadImage(category.URLPhoto,holder.binding.imageProduct);
+            holder.binding.TVTitle.setText(category.title);
+            data.loadImage(category.url,holder.binding.imageProduct);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-                    intent.putExtra(Data.ID,category.CategoryID);
-                    intent.putExtra(Data.TITLE,category.Title);
+                    intent.putExtra(Data.ID,category.categoryID);
+                    intent.putExtra(Data.TITLE,category.title);
                     startActivity(intent);
                 }
             });

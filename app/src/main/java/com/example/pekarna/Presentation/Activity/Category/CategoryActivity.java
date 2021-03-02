@@ -70,9 +70,9 @@ public class CategoryActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final Product product = products.get(position);
 
-            holder.binding.TVTitle.setText(product.TitleProduct);
-            holder.binding.TVPrice.setText(String.valueOf(product.Price));
-            data.loadImage(product.URLPhotoProduct,holder.binding.ProductImage);
+            holder.binding.TVTitle.setText(product.titleProduct);
+            holder.binding.TVPrice.setText(String.valueOf(product.price));
+            data.loadImage(product.urlPhotoProduct,holder.binding.ProductImage);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

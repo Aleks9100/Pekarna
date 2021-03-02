@@ -37,14 +37,14 @@ public class ProductActivity extends AppCompatActivity {
                 } else {
                     currentProduct = productsValue;
                     binding.TVPrice.setText(String.valueOf(currentProduct.getPrice()));
-                    binding.TVTitle.setText(currentProduct.TitleProduct);
-                    binding.TVDescription.setText(currentProduct.Description);
+                    binding.TVTitle.setText(currentProduct.titleProduct);
+                    binding.TVDescription.setText(currentProduct.description);
 
-                    binding.TVKkal.setText(String.valueOf(currentProduct.KKal));
-                    binding.ETProtein.setText(String.valueOf(currentProduct.Protein));
-                    binding.TVCH.setText(String.valueOf(currentProduct.Carbohydrates));
-                    binding.TVFats.setText(String.valueOf(currentProduct.Fat));
-                    data.loadImage(currentProduct.URLPhotoProduct, binding.imageView4);
+                    binding.TVKkal.setText(String.valueOf(currentProduct.kKal));
+                    binding.ETProtein.setText(String.valueOf(currentProduct.protein));
+                    binding.TVCH.setText(String.valueOf(currentProduct.carbohydrates));
+                    binding.TVFats.setText(String.valueOf(currentProduct.fat));
+                    data.loadImage(currentProduct.urlPhotoProduct, binding.imageView4);
                 }
             }
         });

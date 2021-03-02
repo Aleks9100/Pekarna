@@ -33,14 +33,14 @@ public class AddEditProductActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(Product productsValue) {
                     currentProduct =productsValue;
-            binding.ETTitle.setText(currentProduct.TitleProduct);
-            binding.ETCarbohydrates.setText(String.valueOf(currentProduct.Carbohydrates));
-            binding.ETDescription.setText(currentProduct.Description);
-            binding.ETFat.setText(String.valueOf(currentProduct.Fat));
-            binding.ETKKal.setText(String.valueOf(currentProduct.KKal));
-            binding.ETProtein.setText(String.valueOf(currentProduct.Protein));
-            binding.ETPrice.setText(String.valueOf(currentProduct.Price));
-            binding.ETPhoto.setText(currentProduct.URLPhotoProduct);
+            binding.ETTitle.setText(currentProduct.titleProduct);
+            binding.ETCarbohydrates.setText(String.valueOf(currentProduct.carbohydrates));
+            binding.ETDescription.setText(currentProduct.description);
+            binding.ETFat.setText(String.valueOf(currentProduct.fat));
+            binding.ETKKal.setText(String.valueOf(currentProduct.kKal));
+            binding.ETProtein.setText(String.valueOf(currentProduct.protein));
+            binding.ETPrice.setText(String.valueOf(currentProduct.price));
+            binding.ETPhoto.setText(currentProduct.urlPhotoProduct);
                 }
             });
             binding.AddEditButton.setText("Редактировать");
@@ -66,15 +66,15 @@ public class AddEditProductActivity extends AppCompatActivity {
     }
 
     public void AddEditClick(View view) {
-        currentProduct.TitleProduct=data.getStringEditText(binding.ETTitle);
-        currentProduct.Price=Double.parseDouble(data.getStringEditText(binding.ETPrice));
-        currentProduct.Carbohydrates=Integer.parseInt(data.getStringEditText(binding.ETCarbohydrates));
-        currentProduct.Fat=Integer.parseInt(data.getStringEditText(binding.ETFat));
-        currentProduct.Description=data.getStringEditText(binding.ETDescription);
-        currentProduct.KKal=Integer.parseInt(data.getStringEditText(binding.ETKKal));
-        currentProduct.Protein=Integer.parseInt(data.getStringEditText(binding.ETProtein));
-        currentProduct.ProductCategoryID=idCategory;
-        currentProduct.URLPhotoProduct=data.getStringEditText(binding.ETPhoto);
+        currentProduct.titleProduct =data.getStringEditText(binding.ETTitle);
+        currentProduct.price =Double.parseDouble(data.getStringEditText(binding.ETPrice));
+        currentProduct.carbohydrates =Integer.parseInt(data.getStringEditText(binding.ETCarbohydrates));
+        currentProduct.fat =Integer.parseInt(data.getStringEditText(binding.ETFat));
+        currentProduct.description =data.getStringEditText(binding.ETDescription);
+        currentProduct.kKal =Integer.parseInt(data.getStringEditText(binding.ETKKal));
+        currentProduct.protein =Integer.parseInt(data.getStringEditText(binding.ETProtein));
+        currentProduct.productCategoryID =idCategory;
+        currentProduct.urlPhotoProduct =data.getStringEditText(binding.ETPhoto);
         data.db.productDao().insert(currentProduct);
     }
 }
