@@ -5,6 +5,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@android:color/white</item>
+
+        <item name="android:textColor">#fff</item>
+    </style>
+    <style name="Picker">
     </style>
     <style name="EditTextStyle">
         <item name="android:textColor">@color/light</item>

@@ -8,6 +8,7 @@
     tools:context=".Presentation.Activity.login.LoginActivity">
 
     <NumberPicker
+        android:solidColor="@color/black"
         android:background="@color/light"
         android:id="@+id/userNP"
         android:layout_width="wrap_content"

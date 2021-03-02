@@ -1,5 +1,7 @@
 package com.example.pekarna.Database.Entities;
 
+import android.widget.EditText;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -34,4 +36,6 @@ public class Product {
     public int fat;
     @ColumnInfo (name = "productCategoryID")
     public  int productCategoryID;
+
+
 }

@@ -63,4 +63,11 @@ public class Data {
             return db.productDao().getProductInID(id);
         }
 
+
+    public boolean etIsNUll(String string)
+    {
+        if(string == null) return false;
+        else return string.length() != 0;
+    }
+
 }

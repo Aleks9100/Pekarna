@@ -3,13 +3,16 @@ package com.example.pekarna.Presentation.Activity.AddEdit;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.pekarna.Database.Data;
 import com.example.pekarna.Database.Entities.Product;
+import com.example.pekarna.Presentation.Activity.Category.CategoryActivity;
 import com.example.pekarna.databinding.ActivityAddEditProductBinding;
 
 public class AddEditProductActivity extends AppCompatActivity {
@@ -66,15 +69,24 @@ public class AddEditProductActivity extends AppCompatActivity {
     }
 
     public void AddEditClick(View view) {
-        currentProduct.titleProduct =data.getStringEditText(binding.ETTitle);
-        currentProduct.price =Double.parseDouble(data.getStringEditText(binding.ETPrice));
-        currentProduct.carbohydrates =Integer.parseInt(data.getStringEditText(binding.ETCarbohydrates));
-        currentProduct.fat =Integer.parseInt(data.getStringEditText(binding.ETFat));
-        currentProduct.description =data.getStringEditText(binding.ETDescription);
-        currentProduct.kKal =Integer.parseInt(data.getStringEditText(binding.ETKKal));
-        currentProduct.protein =Integer.parseInt(data.getStringEditText(binding.ETProtein));
-        currentProduct.productCategoryID =idCategory;
-        currentProduct.urlPhotoProduct =data.getStringEditText(binding.ETPhoto);
-        data.db.productDao().insert(currentProduct);
+        if(data.etIsNUll(binding.ETCarbohydrates.getText().toString()) && data.etIsNUll(binding.ETDescription.getText().toString())
+                && data.etIsNUll(binding.ETFat.getText().toString()) && data.etIsNUll(binding.ETKKal.getText().toString())
+                && data.etIsNUll(binding.ETPrice.getText().toString()) && data.etIsNUll(binding.ETProtein.getText().toString()) && data.etIsNUll(binding.ETTitle.getText().toString())) {
+
+            currentProduct.titleProduct = data.getStringEditText(binding.ETTitle);
+            currentProduct.price = Double.parseDouble(data.getStringEditText(binding.ETPrice));
+            currentProduct.carbohydrates = Integer.parseInt(data.getStringEditText(binding.ETCarbohydrates));
+            currentProduct.fat = Integer.parseInt(data.getStringEditText(binding.ETFat));
+            currentProduct.description = data.getStringEditText(binding.ETDescription);
+            currentProduct.kKal = Integer.parseInt(data.getStringEditText(binding.ETKKal));
+            currentProduct.protein = Integer.parseInt(data.getStringEditText(binding.ETProtein));
+            currentProduct.productCategoryID = idCategory;
+            currentProduct.urlPhotoProduct = data.getStringEditText(binding.ETPhoto);
+            data.db.productDao().insert(currentProduct);
+            Intent intent = new Intent(AddEditProductActivity.this, CategoryActivity.class);
+            intent.putExtra(data.ID,idCategory);
+            startActivity(intent);
+        }
+        else Toast.makeText(AddEditProductActivity.this,"Не все поля были введены",Toast.LENGTH_LONG);
     }
 }
