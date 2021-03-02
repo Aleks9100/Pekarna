@@ -48,6 +48,10 @@ public class ProductActivity extends AppCompatActivity {
                 }
             }
         });
+        if(!data.admin){
+            binding.floatingActionButton2.setVisibility(View.INVISIBLE);
+            binding.floatingActionButton3.setVisibility(View.INVISIBLE);
+        }
 
     }
 

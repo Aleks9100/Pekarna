@@ -21,6 +21,8 @@ public class Data {
     public final static String ID = "id";
     public final static String ID_PRODUCT = "id_product";
     public final static String TITLE="title";
+    public final static String USER="user";
+    public boolean admin = true;
     public  AppDatabase db;
     RequestManager glide;
     private Data(Context context) {

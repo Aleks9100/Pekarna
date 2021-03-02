@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +18,14 @@ import com.example.pekarna.Database.Entities.Product;
 import com.example.pekarna.Presentation.Activity.AddEdit.AddEditProductActivity;
 import com.example.pekarna.Presentation.Activity.Product.ProductActivity;
 import com.example.pekarna.R;
+import com.example.pekarna.databinding.ActivityCategoryBinding;
 import com.example.pekarna.databinding.CategoryItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
+    ActivityCategoryBinding binding;
     RecyclerView recyclerView;
     ProductAdapter adapter;
     List<Product> products;
@@ -32,7 +35,8 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         TextView title = findViewById(R.id.categoryET);
         recyclerView=findViewById(R.id.ProductRecycler);
         layoutInflater=getLayoutInflater();
@@ -49,6 +53,10 @@ public class CategoryActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+        if(!data.admin)
+        {
+            binding.floatingActionButton.setVisibility(View.INVISIBLE);
+        }
     }
 
 
