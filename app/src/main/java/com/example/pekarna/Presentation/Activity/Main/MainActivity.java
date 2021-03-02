@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(List<Category> categories) {
                 categoryList = categories;
                 adapter.notifyDataSetChanged();
+                if(categoryList.size() == 0) {
+                    category();
+                }
             }
         });
-        if(categoryList.size() == 0) {
-        category();
-        }
     }
 
     public void category()
