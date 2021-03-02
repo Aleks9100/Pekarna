@@ -39,6 +39,7 @@
             <EditText
                 android:id="@+id/ET_Price"
                 style="@style/EditTextStyle"
+                android:inputType="number"
                 android:hint="@string/Price"
                 android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"

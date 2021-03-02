@@ -40,7 +40,9 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="36dp"
+                android:layout_marginBottom="16dp"
                 android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TV_Kkal" />
@@ -106,7 +108,10 @@
                 android:id="@+id/TV_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/alegreya"
                 android:text="Название"
                 android:textColor="@color/light"
                 android:textSize="38sp"
@@ -140,10 +145,13 @@
                 android:id="@+id/TV_Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:text="Описание"
                 android:textColor="@color/grey"
-                android:textSize="28sp"
+
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TV_title" />
@@ -201,6 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Цена"
+                android:fontFamily="@font/alegreya"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                 app:layout_constraintEnd_toEndOf="@+id/imageView7"
@@ -209,14 +218,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton2"
-                android:onClick="EditClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:backgroundTint="@color/black"
                 android:clickable="true"
+                android:onClick="EditClick"
+                app:backgroundTint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_edit" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
